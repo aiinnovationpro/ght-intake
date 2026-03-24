@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Innovator Pro | Website Content Intake — Golden Height Travel</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0F172A;
+      --navy2:   #1E293B;
+      --gold:    #F59E0B;
+      --gold-dk: #D97706;
+      --blue:    #3B82F6;
+      --slate:   #64748B;
+      --light:   #F1F5F9;
+      --white:   #FFFFFF;
+      --border:  #E2E8F0;
+      --red:     #EF4444;
+      --green:   #10B981;
+      --purple:  #8B5CF6;
+      --radius:  10px;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--light);
+      color: var(--navy);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--navy);
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    .logo-wrap { display: flex; align-items: center; gap: 12px; }
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 18px; color: var(--navy);
+      letter-spacing: -1px;
+    }
+    .logo-text { color: var(--white); }
+    .logo-text strong { font-size: 16px; display: block; line-height: 1.2; }
+    .logo-text span { font-size: 11px; color: #94A3B8; letter-spacing: 0.5px; }
+    .header-right { text-align: right; }
+    .header-right .client-label { color: #94A3B8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+    .header-right .client-name { color: var(--gold); font-size: 14px; font-weight: 600; }
+
+    /* ── PROGRESS ── */
+    .progress-wrap {
+      background: var(--navy2);
+      padding: 16px 32px;
+    }
+    .progress-info {
+      display: flex; justify-content: space-between;
+      color: #94A3B8; font-size: 12px; margin-bottom: 8px;
+    }
+    .progress-info span:last-child { color: var(--gold); font-weight: 600; }
+    .progress-bar-bg {
+      background: #334155;
+      border-radius: 100px;
+      height: 6px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      background: linear-gradient(90deg, var(--gold), #FBBF24);
+      height: 100%;
+      border-radius: 100px;
+      transition: width 0.4s ease;
+    }
+    .step-dots { display: flex; gap: 6px; margin-top: 10px; }
+    .step-dot {
+      flex: 1; height: 3px; border-radius: 100px;
+      background: #334155; transition: background 0.3s;
+    }
+    .step-dot.done { background: var(--gold); }
+    .step-dot.active { background: #FBBF24; }
+
+    /* ── MAIN ── */
+    .main { max-width: 860px; margin: 0 auto; padding: 32px 20px 100px; }
+
+    /* ── STEP HEADER ── */
+    .step-header { margin-bottom: 28px; }
+    .step-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--gold); color: var(--navy);
+      padding: 4px 12px; border-radius: 100px;
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .step-title { font-size: 26px; font-weight: 700; color: var(--navy); line-height: 1.2; }
+    .step-subtitle { color: var(--slate); font-size: 14px; margin-top: 6px; line-height: 1.6; }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .card-title {
+      font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--navy);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 8px; margin-bottom: 20px;
+    }
+    .priority-high { border-left: 4px solid var(--red); }
+    .priority-med  { border-left: 4px solid var(--gold); }
+    .priority-low  { border-left: 4px solid var(--blue); }
+
+    /* ── FORM ELEMENTS ── */
+    .field-group { margin-bottom: 20px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+
+    label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: var(--navy2); margin-bottom: 6px;
+    }
+    label .req { color: var(--red); margin-left: 2px; }
+    label .priority-tag {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      padding: 1px 6px; border-radius: 4px;
+      margin-left: 6px; text-transform: uppercase;
+    }
+    .tag-high { background: #FEE2E2; color: #991B1B; }
+    .tag-med  { background: #FEF3C7; color: #92400E; }
+
+    input[type="text"], input[type="email"], input[type="tel"],
+    input[type="url"], input[type="number"], select, textarea {
+      width: 100%; padding: 10px 14px;
+      border: 1px solid var(--border); border-radius: 8px;
+      font-size: 14px; color: var(--navy);
+      background: #FAFAFA;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(245,158,11,0.15);
+      background: var(--white);
+    }
+    textarea { resize: vertical; min-height: 100px; }
+
+    /* ── RADIO / CHECKBOX ── */
+    .radio-group, .check-group {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px;
+    }
+    .radio-item, .check-item {
+      display: flex; align-items: center; gap: 6px;
+      padding: 8px 14px; border: 1px solid var(--border);
+      border-radius: 8px; cursor: pointer; font-size: 13px;
+      transition: all 0.2s; user-select: none;
+    }
+    .radio-item:hover, .check-item:hover { border-color: var(--gold); background: #FFFBEB; }
+    .radio-item input, .check-item input { cursor: pointer; accent-color: var(--gold); }
+
+    /* ── DYNAMIC ROWS ── */
+    .dynamic-section { margin-top: 12px; }
+    .dynamic-item {
+      background: #F8FAFC; border: 1px solid var(--border);
+      border-radius: 8px; padding: 18px; margin-bottom: 12px;
+    }
+    .dynamic-item-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .dynamic-item-title { font-size: 13px; font-weight: 700; color: var(--navy2); }
+    .btn-remove {
+      background: #FEE2E2; color: #991B1B; border: none;
+      border-radius: 6px; padding: 4px 10px;
+      font-size: 12px; font-weight: 600; cursor: pointer;
+    }
+    .btn-add {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--navy2); color: var(--white);
+      border: none; border-radius: 8px;
+      padding: 10px 18px; font-size: 13px; font-weight: 600;
+      cursor: pointer; margin-top: 8px; transition: background 0.2s;
+    }
+    .btn-add:hover { background: var(--navy); }
+
+    /* ── DESTINATION TABS ── */
+    .dest-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .dest-tab {
+      padding: 8px 16px; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--white);
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: all 0.2s; color: var(--slate);
+    }
+    .dest-tab.active { background: var(--navy2); color: var(--white); border-color: var(--navy2); }
+    .dest-panel { display: none; }
+    .dest-panel.active { display: block; }
+
+    /* ── HINT BOX ── */
+    .hint-box {
+      background: #EFF6FF; border: 1px solid #BFDBFE;
+      border-radius: 8px; padding: 12px 16px; margin-bottom: 16px;
+      font-size: 13px; color: #1E40AF;
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .hint-box .hint-icon { font-size: 16px; flex-shrink: 0; }
+    .hint-box.green { background: #F0FDF4; border-color: #BBF7D0; color: #166534; }
+    .hint-box.amber { background: #FFFBEB; border-color: #FDE68A; color: #92400E; }
+
+    /* ── SIKA CRM GUIDE ── */
+    .sikacrm-guide {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+    .sikacrm-guide .guide-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+    }
+    .sikacrm-guide .guide-icon {
+      width: 48px; height: 48px;
+      background: var(--gold); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .sikacrm-guide h3 { font-size: 18px; font-weight: 700; color: var(--gold); }
+    .sikacrm-guide p { font-size: 13px; color: #94A3B8; margin-top: 2px; }
+    .guide-steps { display: flex; flex-direction: column; gap: 14px; }
+    .guide-step {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; padding: 14px;
+    }
+    .guide-step-num {
+      width: 28px; height: 28px; min-width: 28px;
+      background: var(--gold); color: var(--navy);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800;
+    }
+    .guide-step-content strong { font-size: 14px; display: block; margin-bottom: 4px; color: var(--white); }
+    .guide-step-content span { font-size: 12px; color: #94A3B8; line-height: 1.5; }
+    .guide-step-content a { color: var(--gold); text-decoration: none; font-weight: 600; }
+    .guide-step-content a:hover { text-decoration: underline; }
+    .folder-list { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+    .folder-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: #CBD5E1; padding: 4px 0;
+    }
+    .folder-item span { color: var(--gold); font-weight: 600; min-width: 130px; }
+
+    /* ── REVIEW SUMMARY ── */
+    .summary-grid { display: grid; gap: 12px; }
+    .summary-item {
+      background: #F8FAFC; border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px 18px;
+    }
+    .summary-item .s-label { font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.5px; color: var(--slate); margin-bottom: 4px; }
+    .summary-item .s-value { font-size: 14px; font-weight: 600; color: var(--navy); }
+    .summary-item .s-status { font-size: 12px; margin-top: 2px; }
+    .s-complete { color: var(--green) !important; }
+    .s-incomplete { color: #94A3B8 !important; }
+
+    /* ── SUCCESS SCREEN ── */
+    #success-screen {
+      display: none; text-align: center;
+      max-width: 600px; margin: 60px auto; padding: 40px 20px;
+    }
+    .success-icon { font-size: 64px; margin-bottom: 20px; }
+    #success-screen h2 { font-size: 28px; color: var(--navy); margin-bottom: 12px; }
+    #success-screen p { color: var(--slate); font-size: 15px; margin-bottom: 24px; line-height: 1.6; }
+    .success-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .btn-action {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 24px; border-radius: 8px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      border: none; text-decoration: none;
+    }
+    .btn-action.dark { background: var(--navy); color: var(--white); }
+    .btn-action.gold { background: var(--gold); color: var(--navy); }
+    .btn-action.green { background: var(--green); color: var(--white); }
+
+    /* ── NAV FOOTER ── */
+    .nav-footer {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--white); border-top: 1px solid var(--border);
+      padding: 16px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.08); z-index: 50;
+    }
+    .btn-nav {
+      padding: 12px 28px; border-radius: 8px;
+      font-size: 14px; font-weight: 600; cursor: pointer; border: none;
+      transition: all 0.2s;
+    }
+    .btn-prev { background: var(--light); color: var(--navy2); border: 1px solid var(--border); }
+    .btn-prev:hover { background: var(--border); }
+    .btn-next { background: var(--gold); color: var(--navy); }
+    .btn-next:hover { background: var(--gold-dk); }
+    .btn-submit { background: var(--green); color: var(--white); }
+    .btn-submit:hover { background: #059669; }
+    .nav-step-text { font-size: 13px; color: var(--slate); }
+
+    /* ── STEP VISIBILITY ── */
+    .step { display: none; }
+    .step.active { display: block; }
+
+    /* ── UTILITY ── */
+    .text-slate { color: var(--slate); font-size: 13px; line-height: 1.5; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+    .mt-4 { margin-top: 16px; }
+    .mb-2 { margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════
+     HEADER
+═══════════════════════════════ -->
+<header class="site-header">
+  <div class="logo-wrap">
+    <div class="logo-icon">AI</div>
+    <div class="logo-text">
+      <strong>AI Innovator Pro</strong>
+      <span>AI Automation Consultancy</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="client-label">Website Content Intake</div>
+    <div class="client-name">Golden Height Travel &amp; Consult</div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════
+     PROGRESS BAR
+═══════════════════════════════ -->
+<div class="progress-wrap">
+  <div class="progress-info">
+    <span id="progress-label">Step 1 of 7 — Business &amp; Contact Details</span>
+    <span id="progress-pct">14%</span>
+  </div>
+  <div class="progress-bar-bg">
+    <div class="progress-bar-fill" id="progress-fill" style="width:14%"></div>
+  </div>
+  <div class="step-dots" id="step-dots"></div>
+</div>
+
+<!-- ═══════════════════════════════
+     MAIN
+═══════════════════════════════ -->
+<div class="main" id="form-wrap">
+<form id="intake-form" novalidate>
+
+<!-- ═══════════════════════════
+     STEP 1 — BUSINESS & CONTACT
+═══════════════════════════ -->
+<div class="step active" id="step-1">
+  <div class="step-header">
+    <div class="step-badge">📋 Step 1 of 7</div>
+    <h1 class="step-title">Business &amp; Contact Details</h1>
+    <p class="step-subtitle">Core information that appears across your website — contact page, footer, and legal pages. Our team will handle domain registration, hosting, and email setup on your behalf.</p>
+  </div>
+
+  <div class="card priority-high">
+    <div class="card-title">🔴 Business Registration</div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Legal Business Name <span class="req">*</span> <span class="priority-tag tag-high">HIGH</span></label>
+        <input type="text" name="legal_name" placeholder="e.g. Golden Height Travel & Consult Ltd" required />
+      </div>
+      <div class="field-group">
+        <label>Trading / Brand Name <span class="priority-tag tag-high">HIGH</span></label>
+        <input type="text" name="trading_name" placeholder="e.g. Golden Height Travel" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Ghana Business Registration Number <span class="req">*</span> <span class="priority-tag tag-med">MED</span></label>
+        <input type="text" name="reg_number" placeholder="e.g. CS-123456789" required />
+      </div>
+      <div class="field-group">
+        <label>Year Founded <span class="req">*</span> <span class="priority-tag tag-high">HIGH</span></label>
+        <input type="number" name="year_founded" placeholder="e.g. 2018" min="1990" max="2026" required />
+      </div>
+    </div>
+  </div>
+
+  <div class="card priority-high">
+    <div class="card-title">🔴 Contact Information</div>
+    <div class="field-group">
+      <label>Full Physical Address <span class="req">*</span> <span class="priority-tag tag-high">HIGH</span></label>
+      <textarea name="address" rows="2" placeholder="Street address, Area, City, Region, Ghana" required></textarea>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Primary Phone Number <span class="req">*</span> <span class="priority-tag tag-high">HIGH</span></label>
+        <input type="tel" name="phone_primary" placeholder="+233 XX XXX XXXX" required />
+      </div>
+      <div class="field-group">
+        <label>WhatsApp Business Number <span class="req">*</span> <span class="priority-tag tag-high">HIGH</span></label>
+        <input type="tel" name="whatsapp_number" placeholder="+233 XX XXX XXXX" required />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Primary Contact Email <span class="req">*</span> <span class="priority-tag tag-high">HIGH</span></label>
+        <input type="email" name="email_primary" placeholder="info@goldenheighttravel.com" required />
+      </div>
+      <div class="field-group">
+        <label>Bookings Email <span class="priority-tag tag-med">MED</span></label>
+        <input type="email" name="email_bookings" placeholder="bookings@goldenheighttravel.com" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Visa Services Email <span class="priority-tag tag-med">MED</span></label>
+        <input type="email" name="email_visa" placeholder="visa@goldenheighttravel.com" />
+      </div>
+      <div class="field-group">
+        <label>Support Email <span class="priority-tag tag-med">MED</span></label>
+        <input type="email" name="email_support" placeholder="support@goldenheighttravel.com" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>WhatsApp Default Pre-filled Message <span class="priority-tag tag-high">HIGH</span></label>
+        <input type="text" name="whatsapp_prefill" placeholder="e.g. Hello! I'd like to enquire about a travel package." />
+      </div>
+      <div class="field-group">
+        <label>Auto-Reply for Website Enquiries <span class="priority-tag tag-high">HIGH</span></label>
+        <input type="text" name="autoreply_msg" placeholder="e.g. Thank you! We'll respond within 1 business day." />
+      </div>
+    </div>
+  </div>
+
+  <div class="card priority-med">
+    <div class="card-title">🟡 Social Media &amp; Online Presence</div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Facebook Page URL</label>
+        <input type="url" name="social_facebook" placeholder="https://facebook.com/goldenheighttravel" />
+      </div>
+      <div class="field-group">
+        <label>Instagram Profile URL</label>
+        <input type="url" name="social_instagram" placeholder="https://instagram.com/goldenheighttravel" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>LinkedIn Page URL</label>
+        <input type="url" name="social_linkedin" placeholder="https://linkedin.com/company/..." />
+      </div>
+      <div class="field-group">
+        <label>X / Twitter URL</label>
+        <input type="url" name="social_x" placeholder="https://x.com/goldenheighttravel" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>YouTube Channel</label>
+        <input type="url" name="social_youtube" placeholder="https://youtube.com/@goldenheighttravel" />
+      </div>
+      <div class="field-group">
+        <label>Industry Accreditations / Certifications</label>
+        <input type="text" name="accreditations" placeholder="e.g. IATA, Ghana Tourism Authority — list all" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     STEP 2 — COMPANY STORY & TEAM
+═══════════════════════════ -->
+<div class="step" id="step-2">
+  <div class="step-header">
+    <div class="step-badge">📖 Step 2 of 7</div>
+    <h1 class="step-title">Company Story, Team &amp; Testimonials</h1>
+    <p class="step-subtitle">The human side of your brand. This content goes on your About page, homepage trust section, and throughout the site.</p>
+  </div>
+
+  <div class="card priority-high">
+    <div class="card-title">🔴 Company Story &amp; Statistics</div>
+    <div class="field-group">
+      <label>Founding Story &amp; Company History <span class="req">*</span> <span class="priority-tag tag-high">HIGH</span></label>
+      <p class="text-slate mb-2">Write 3–5 paragraphs covering: why the company was started, what problem it solves, key turning points, where you are today, and your vision.</p>
+      <textarea name="founding_story" rows="8" placeholder="Golden Height Travel was founded in [year] by [founder name] with a simple mission..." required></textarea>
+    </div>
+    <div class="field-group">
+      <label>Key Company Milestones <span class="priority-tag tag-high">HIGH</span></label>
+      <textarea name="milestones" rows="4" placeholder="e.g.&#10;2018 – Company founded&#10;2019 – First corporate travel contract&#10;2021 – Expanded to visa processing&#10;2023 – Moved to current Osu office"></textarea>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Total Clients Served (approx.)</label>
+        <input type="text" name="stat_clients" placeholder="e.g. 500+" />
+      </div>
+      <div class="field-group">
+        <label>Visa Approval Rate</label>
+        <input type="text" name="stat_visa_rate" placeholder="e.g. 95%" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Years in Business</label>
+        <input type="text" name="stat_years" placeholder="e.g. 8 years" />
+      </div>
+      <div class="field-group">
+        <label>Number of Partner Airlines / Hotels</label>
+        <input type="text" name="stat_partners" placeholder="e.g. 30+ partners" />
+      </div>
+    </div>
+  </div>
+
+  <div class="card priority-high">
+    <div class="card-title">🔴 Team Members</div>
+    <p class="text-slate mb-2">Add each team member who should appear on the website. For photos, upload them via the SikaCRM project portal (Step 2 at the end of this form).</p>
+    <div id="team-members" class="dynamic-section"></div>
+    <button type="button" class="btn-add" onclick="addTeamMember()">+ Add Team Member</button>
+  </div>
+
+  <div class="card priority-high">
+    <div class="card-title">🔴 Client Testimonials</div>
+    <p class="text-slate mb-2">Minimum 5–8 real testimonials. These appear on the homepage and service pages. You may use initials if clients prefer privacy.</p>
+    <div id="testimonials" class="dynamic-section"></div>
+    <button type="button" class="btn-add" onclick="addTestimonial()">+ Add Testimonial</button>
+  </div>
+
+  <div class="card priority-med">
+    <div class="card-title">🟡 Trust &amp; Credentials</div>
+    <div class="field-group">
+      <label>Partner / Airline / Hotel Names to Display</label>
+      <textarea name="partner_names" rows="3" placeholder="e.g. Emirates, Kenya Airways, Marriott, Accor Hotels, Radisson — list all partners you have permission to display"></textarea>
+    </div>
+    <div class="field-group">
+      <label>Google Business / TripAdvisor Profile URL</label>
+      <input type="url" name="review_profile_url" placeholder="https://maps.google.com/... or https://tripadvisor.com/..." />
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     STEP 3 — SERVICES & PRICING
+═══════════════════════════ -->
+<div class="step" id="step-3">
+  <div class="step-header">
+    <div class="step-badge">💰 Step 3 of 7</div>
+    <h1 class="step-title">Services, Packages &amp; Pricing</h1>
+    <p class="step-subtitle">Pricing and service details are HIGH priority — the site cannot convert visitors without them. Be as specific as possible.</p>
+  </div>
+
+  <div class="card priority-high">
+    <div class="card-title">🔴 Vacation Packages</div>
+    <div class="field-group">
+      <label>Package Tiers — Names &amp; Price Ranges <span class="req">*</span> <span class="priority-tag tag-high">HIGH</span></label>
+      <textarea name="vacation_pricing" rows="6" placeholder="Standard Package: GHS 5,000–8,000 per person&#10;Premium Package: GHS 8,000–15,000 per person&#10;Luxury / All-Inclusive: GHS 15,000+ per person&#10;&#10;Include what each tier covers (flights, accommodation, transfers, meals etc.)"></textarea>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>What Is Included Across All Packages?</label>
+        <textarea name="vacation_inclusions" rows="3" placeholder="e.g. Return flights, airport transfers, accommodation, travel insurance..."></textarea>
+      </div>
+      <div class="field-group">
+        <label>What Is Excluded / Additional Costs?</label>
+        <textarea name="vacation_exclusions" rows="3" placeholder="e.g. Visa fees, personal spending, travel vaccinations..."></textarea>
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Available Package Types</label>
+      <div class="check-group">
+        <label class="check-item"><input type="checkbox" name="pkg_type" value="honeymoon" /> 💍 Honeymoon</label>
+        <label class="check-item"><input type="checkbox" name="pkg_type" value="family" /> 👨‍👩‍👧 Family</label>
+        <label class="check-item"><input type="checkbox" name="pkg_type" value="solo" /> 🧳 Solo</label>
+        <label class="check-item"><input type="checkbox" name="pkg_type" value="christmas" /> 🎄 Christmas</label>
+        <label class="check-item"><input type="checkbox" name="pkg_type" value="corporate" /> 💼 Corporate</label>
+        <label class="check-item"><input type="checkbox" name="pkg_type" value="custom" /> ✨ Custom</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="card priority-high">
+    <div class="card-title">🔴 Visa &amp; Document Services Pricing</div>
+    <p class="text-slate mb-2">List each visa type you offer. Include destination, processing tier, time, and agency fee (separate from embassy fee).</p>
+    <div id="visa-pricing" class="dynamic-section"></div>
+    <button type="button" class="btn-add" onclick="addVisaType()">+ Add Visa Type</button>
+    <hr />
+    <div class="field-group mt-4">
+      <label>Visa Auto-Reply Message</label>
+      <textarea name="visa_autoreply" rows="3" placeholder="e.g. Thank you for your visa enquiry. A consultant will respond within 1 business day. For urgent matters WhatsApp us at +233..."></textarea>
+    </div>
+    <div class="field-group">
+      <label>Visa Types / Countries You Do NOT Handle</label>
+      <textarea name="visa_excluded" rows="2" placeholder="e.g. USA visas, Schengen for non-Ghanaian passport holders..."></textarea>
+    </div>
+  </div>
+
+  <div class="card priority-high">
+    <div class="card-title">🔴 Creative Services</div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Services Offered</label>
+        <textarea name="creative_services" rows="4" placeholder="e.g. Photography, Videography, Graphic Design, Social Media Content, Branding..."></textarea>
+      </div>
+      <div class="field-group">
+        <label>Pricing Guide / Rates</label>
+        <textarea name="creative_pricing" rows="4" placeholder="e.g. Event Photography: GHS 800–2,000&#10;Corporate Headshots: GHS 500/session&#10;Video Production: from GHS 3,000"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="card priority-high">
+    <div class="card-title">🔴 Business Solutions</div>
+    <div class="field-group">
+      <label>Car Rental Rates</label>
+      <textarea name="car_rental_rates" rows="3" placeholder="e.g. Economy: GHS 200/day | SUV: GHS 400/day | Minibus: GHS 600/day | Airport transfer: GHS 150 flat"></textarea>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Courier / Logistics Services &amp; Rates</label>
+        <textarea name="courier_services" rows="3" placeholder="e.g. Document courier (same-day Accra): GHS 50 | International: from GHS 200"></textarea>
+      </div>
+      <div class="field-group">
+        <label>Airline Ticketing Process</label>
+        <textarea name="airline_process" rows="3" placeholder="e.g. Client provides dates → we present 3 options → payment via mobile money → e-ticket in 24hrs"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     STEP 4 — DESTINATIONS
+═══════════════════════════ -->
+<div class="step" id="step-4">
+  <div class="step-header">
+    <div class="step-badge">🌍 Step 4 of 7</div>
+    <h1 class="step-title">Destination-Specific Content</h1>
+    <p class="step-subtitle">Each of your 8 destination pages needs unique, accurate content. Click each tab to fill in details. Destination photography is uploaded via the SikaCRM portal.</p>
+  </div>
+
+  <div class="hint-box">
+    <span class="hint-icon">💡</span>
+    <div>Click each destination tab to fill in its details. Complete as many as you can — you can return and update any section before final handover.</div>
+  </div>
+
+  <div class="dest-tabs">
+    <button type="button" class="dest-tab active" onclick="showDest('dubai',this)">🇦🇪 Dubai</button>
+    <button type="button" class="dest-tab" onclick="showDest('zanzibar',this)">🇹🇿 Zanzibar</button>
+    <button type="button" class="dest-tab" onclick="showDest('singapore',this)">🇸🇬 Singapore</button>
+    <button type="button" class="dest-tab" onclick="showDest('malaysia',this)">🇲🇾 Malaysia</button>
+    <button type="button" class="dest-tab" onclick="showDest('southafrica',this)">🇿🇦 S. Africa</button>
+    <button type="button" class="dest-tab" onclick="showDest('seychelles',this)">🇸🇨 Seychelles</button>
+    <button type="button" class="dest-tab" onclick="showDest('mauritius',this)">🇲🇺 Mauritius</button>
+    <button type="button" class="dest-tab" onclick="showDest('saotome',this)">🇸🇹 São Tomé</button>
+  </div>
+
+  <div id="dest-dubai"       class="dest-panel card priority-high active"><div class="card-title">🇦🇪 Dubai (UAE)</div><div id="dest-fields-dubai"></div></div>
+  <div id="dest-zanzibar"    class="dest-panel card priority-high"><div class="card-title">🇹🇿 Zanzibar (Tanzania)</div><div id="dest-fields-zanzibar"></div></div>
+  <div id="dest-singapore"   class="dest-panel card priority-high"><div class="card-title">🇸🇬 Singapore</div><div id="dest-fields-singapore"></div></div>
+  <div id="dest-malaysia"    class="dest-panel card priority-high"><div class="card-title">🇲🇾 Malaysia</div><div id="dest-fields-malaysia"></div></div>
+  <div id="dest-southafrica" class="dest-panel card priority-high"><div class="card-title">🇿🇦 South Africa</div><div id="dest-fields-southafrica"></div></div>
+  <div id="dest-seychelles"  class="dest-panel card priority-high"><div class="card-title">🇸🇨 Seychelles</div><div id="dest-fields-seychelles"></div></div>
+  <div id="dest-mauritius"   class="dest-panel card priority-high"><div class="card-title">🇲🇺 Mauritius</div><div id="dest-fields-mauritius"></div></div>
+  <div id="dest-saotome"     class="dest-panel card priority-high"><div class="card-title">🇸🇹 São Tomé and Príncipe</div><div id="dest-fields-saotome"></div></div>
+</div>
+
+<!-- ═══════════════════════════
+     STEP 5 — VISA SERVICES DETAIL
+═══════════════════════════ -->
+<div class="step" id="step-5">
+  <div class="step-header">
+    <div class="step-badge">🛂 Step 5 of 7</div>
+    <h1 class="step-title">Visa Services — Detailed Requirements</h1>
+    <p class="step-subtitle">Your visa page is one of the highest-converting sections. Specific, accurate information builds trust and drives applications.</p>
+  </div>
+
+  <div class="card priority-high">
+    <div class="card-title">🔴 Required Documents per Visa Type</div>
+    <p class="text-slate mb-2">For each major visa type, list documents clients must submit. These become downloadable checklists on the website.</p>
+    <div id="visa-checklists" class="dynamic-section"></div>
+    <button type="button" class="btn-add" onclick="addVisaChecklist()">+ Add Visa Document Checklist</button>
+  </div>
+
+  <div class="card priority-high">
+    <div class="card-title">🔴 Visa Application Form Fields</div>
+    <div class="field-group">
+      <label>What information must a client provide to start a visa application?</label>
+      <textarea name="visa_form_fields" rows="8" placeholder="e.g.&#10;Full legal name (as in passport)&#10;Date of birth&#10;Passport number and expiry date&#10;Travel dates (departure + return)&#10;Destination country&#10;Purpose of travel&#10;Accommodation details&#10;Emergency contact&#10;Passport bio page scan&#10;Passport photo (white background)"></textarea>
+    </div>
+  </div>
+
+  <div class="card priority-med">
+    <div class="card-title">🟡 Visa Operations</div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Do You Offer In-Person Consultations?</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="visa_consult" value="yes" /> Yes</label>
+          <label class="radio-item"><input type="radio" name="visa_consult" value="no" /> No</label>
+          <label class="radio-item"><input type="radio" name="visa_consult" value="online" /> Online only</label>
+        </div>
+      </div>
+      <div class="field-group">
+        <label>Can Clients Track Their Application?</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="visa_tracking" value="yes" /> Yes</label>
+          <label class="radio-item"><input type="radio" name="visa_tracking" value="whatsapp" /> Via WhatsApp updates</label>
+          <label class="radio-item"><input type="radio" name="visa_tracking" value="no" /> No</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card priority-low">
+    <div class="card-title">FAQ Content</div>
+    <div class="field-group">
+      <label>Provide 15–25 FAQs (Question &amp; Answer pairs) <span class="priority-tag tag-high">HIGH</span></label>
+      <p class="text-slate mb-2">Cover all 4 service verticals: Vacation Packages, Visa Services, Creative Services, Business Solutions.</p>
+      <textarea name="faq_content" rows="14" placeholder="Q: How long does visa processing take?&#10;A: Standard is 5–7 business days. Express is 2–3 days. Ultra-express is 24 hours (varies by destination).&#10;&#10;Q: Do you guarantee visa approval?&#10;A: We maximise approval chances by ensuring your application is complete. Final approval is at the embassy's discretion.&#10;&#10;Q: What payment methods do you accept?&#10;A: Mobile money (MTN, Vodafone), bank transfer, and cash at our office.&#10;&#10;[Continue adding Q&amp;A pairs for all services...]"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     STEP 6 — TECHNICAL (SIMPLIFIED)
+═══════════════════════════ -->
+<div class="step" id="step-6">
+  <div class="step-header">
+    <div class="step-badge">⚙️ Step 6 of 7</div>
+    <h1 class="step-title">Website Features &amp; Preferences</h1>
+    <p class="step-subtitle">A few decisions needed from you. Our team is handling all technical setup — domain, hosting, analytics, and integrations. We just need your content preferences below.</p>
+  </div>
+
+  <div class="hint-box green">
+    <span class="hint-icon">✅</span>
+    <div><strong>Handled by AI Innovator Pro:</strong> Domain registration, hosting (Vercel), professional email setup, Google Analytics, SSL certificate, sitemap, and all technical integrations. You do not need to worry about any of these.</div>
+  </div>
+
+  <div class="card priority-high">
+    <div class="card-title">🔴 Lead Capture &amp; Notifications</div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Email to Receive All Website Lead Notifications <span class="req">*</span> <span class="priority-tag tag-high">HIGH</span></label>
+        <input type="email" name="email_leads" placeholder="Where new website enquiries should be sent" required />
+      </div>
+      <div class="field-group">
+        <label>Secondary Notification Email (optional)</label>
+        <input type="email" name="email_leads_cc" placeholder="e.g. a second team member" />
+      </div>
+    </div>
+    <div class="hint-box amber" style="margin-top:12px">
+      <span class="hint-icon">⚡</span>
+      <div>All leads captured through the website will flow into your <strong>SikaCRM project portal</strong> for follow-up. Our team will configure this automatically.</div>
+    </div>
+  </div>
+
+  <div class="card priority-med">
+    <div class="card-title">🟡 Website Feature Preferences</div>
+
+    <div class="field-group">
+      <label>Should the website support online payment / deposits at launch?</label>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="online_payment" value="yes" /> Yes — accept deposits online (Paystack)</label>
+        <label class="radio-item"><input type="radio" name="online_payment" value="no" /> No — invoice &amp; bank transfer only</label>
+        <label class="radio-item"><input type="radio" name="online_payment" value="later" /> Post-launch — set up later</label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Multi-step Booking / Enquiry Forms</label>
+      <p class="text-slate mb-2">Should enquiry forms be multi-step wizards (service → details → confirm)?</p>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="multistep_forms" value="yes" /> Yes — multi-step (more professional)</label>
+        <label class="radio-item"><input type="radio" name="multistep_forms" value="no" /> No — single page form is fine</label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Should Enquiries Generate a Reference Number?</label>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="ref_numbers" value="yes" /> Yes — show clients a ref number</label>
+        <label class="radio-item"><input type="radio" name="ref_numbers" value="no" /> No — keep it simple</label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Is a French Language Version of the Site Planned?</label>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="french_version" value="yes" /> Yes</label>
+        <label class="radio-item"><input type="radio" name="french_version" value="no" /> No</label>
+        <label class="radio-item"><input type="radio" name="french_version" value="later" /> Post-launch maybe</label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Website Navigation Structure <span class="priority-tag tag-high">HIGH</span></label>
+      <p class="text-slate mb-2">Confirm the main menu items you want on the site.</p>
+      <textarea name="nav_structure" rows="3" placeholder="e.g. Home | Destinations | Vacation Packages | Visa Services | Creative Services | Business Solutions | About | Blog | Contact"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     STEP 7 — LEGAL & REVIEW
+═══════════════════════════ -->
+<div class="step" id="step-7">
+  <div class="step-header">
+    <div class="step-badge">📝 Step 7 of 7</div>
+    <h1 class="step-title">Legal Content, Blog &amp; File Upload Guide</h1>
+    <p class="step-subtitle">Final content requirements, then a step-by-step guide for uploading your files (logos, photos, documents) to our secure project portal.</p>
+  </div>
+
+  <div class="card priority-high">
+    <div class="card-title">🔴 Legal Pages</div>
+    <div class="field-group">
+      <label>Privacy Policy</label>
+      <div class="radio-group" style="margin-bottom:10px">
+        <label class="radio-item"><input type="radio" name="privacy_source" value="have_it" /> I have it — see below</label>
+        <label class="radio-item"><input type="radio" name="privacy_source" value="draft_it" /> Please draft it for me</label>
+      </div>
+      <textarea name="privacy_policy" rows="5" placeholder="Paste your Privacy Policy text here (tailored to Ghana jurisdiction)..."></textarea>
+    </div>
+    <hr />
+    <div class="field-group">
+      <label>Terms &amp; Conditions</label>
+      <div class="radio-group" style="margin-bottom:10px">
+        <label class="radio-item"><input type="radio" name="terms_source" value="have_it" /> I have it — see below</label>
+        <label class="radio-item"><input type="radio" name="terms_source" value="draft_it" /> Please draft it for me</label>
+      </div>
+      <textarea name="terms_conditions" rows="5" placeholder="Paste your Terms & Conditions text here..."></textarea>
+    </div>
+    <hr />
+    <div class="field-group">
+      <label>Booking Conditions (Payment, Cancellation &amp; Refund Policy) <span class="priority-tag tag-high">HIGH</span></label>
+      <textarea name="booking_conditions" rows="5" placeholder="e.g.&#10;Payment: 50% deposit to confirm. Balance due 14 days before travel.&#10;Cancellation: 30+ days — 80% refund. 15–29 days — 50% refund. Under 14 days — no refund.&#10;Refunds processed within 7–10 business days."></textarea>
+    </div>
+  </div>
+
+  <div class="card priority-med">
+    <div class="card-title">🟡 Blog Content</div>
+    <div class="field-group">
+      <label>Blog Content Status</label>
+      <div class="radio-group">
+        <label class="radio-item"><input type="radio" name="blog_source" value="have_it" /> I have articles ready</label>
+        <label class="radio-item"><input type="radio" name="blog_source" value="ai_draft" /> Please write them (AI-assisted)</label>
+        <label class="radio-item"><input type="radio" name="blog_source" value="post_launch" /> Add post-launch</label>
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Blog Topics to Cover</label>
+      <textarea name="blog_topics" rows="4" placeholder="e.g.&#10;- Top 5 beaches in Zanzibar for Ghanaians&#10;- How to apply for a UAE visa from Accra&#10;- Christmas travel packages 2026&#10;- Visa-free destinations for Ghanaian passport holders&#10;- Why use a travel agent vs booking yourself"></textarea>
+    </div>
+  </div>
+
+  <div class="card priority-low">
+    <div class="card-title">Additional Notes</div>
+    <div class="field-group">
+      <label>Anything else the development team should know?</label>
+      <textarea name="additional_notes" rows="4" placeholder="Special requests, competitor websites you admire, things to avoid, brand preferences, timeline concerns..."></textarea>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Your Full Name <span class="req">*</span></label>
+        <input type="text" name="submitter_name" placeholder="Theophilus Adu" required />
+      </div>
+      <div class="field-group">
+        <label>Your Role <span class="req">*</span></label>
+        <input type="text" name="submitter_role" placeholder="e.g. CEO / Founder" required />
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="check-item" style="margin-top:6px; display:flex">
+        <input type="checkbox" name="confirm_accuracy" required style="width:auto;margin-right:8px" />
+        I confirm all information submitted is accurate and I am authorised to provide it.
+      </label>
+    </div>
+  </div>
+
+  <!-- SIKACRM FILE UPLOAD GUIDE -->
+  <div class="sikacrm-guide">
+    <div class="guide-header">
+      <div class="guide-icon">📁</div>
+      <div>
+        <h3>Step 2 — Upload Your Files via SikaCRM Project Portal</h3>
+        <p>After submitting this form, follow the steps below to upload all your visual assets and documents.</p>
+      </div>
+    </div>
+    <div class="guide-steps">
+      <div class="guide-step">
+        <div class="guide-step-num">1</div>
+        <div class="guide-step-content">
+          <strong>Check your email for your SikaCRM login</strong>
+          <span>AI Innovator Pro will send your login credentials to <strong id="client-email-display">your registered email</strong> within 1 business day of form submission. The email will come from <strong>sikacrm.net</strong>.</span>
+        </div>
+      </div>
+      <div class="guide-step">
+        <div class="guide-step-num">2</div>
+        <div class="guide-step-content">
+          <strong>Log in to the project portal</strong>
+          <span>Visit <a href="https://sikacrm.net" target="_blank">sikacrm.net</a> → click <em>Client Login</em> → enter your email and the temporary password from the email → set your new password.</span>
+        </div>
+      </div>
+      <div class="guide-step">
+        <div class="guide-step-num">3</div>
+        <div class="guide-step-content">
+          <strong>Open your project — "Golden Height Travel Website"</strong>
+          <span>On your dashboard you will see the project card. Click it to open the project view where you can track progress and upload files.</span>
+        </div>
+      </div>
+      <div class="guide-step">
+        <div class="guide-step-num">4</div>
+        <div class="guide-step-content">
+          <strong>Go to the Files section and upload everything</strong>
+          <span>Click the <em>Files</em> tab inside the project. Upload your files — please organise them clearly using these categories:</span>
+          <div class="folder-list">
+            <div class="folder-item"><span>📂 Logos</span>Full colour, white version, icon only (SVG + PNG)</div>
+            <div class="folder-item"><span>📂 Team Photos</span>Professional headshot per team member (min 400×400px)</div>
+            <div class="folder-item"><span>📂 Hero Images</span>Homepage hero + 4 service page heroes (min 1920×1080px)</div>
+            <div class="folder-item"><span>📂 Destinations</span>1 hero + 3–5 gallery images per destination (labelled by country)</div>
+            <div class="folder-item"><span>📂 Office Photos</span>Interior or exterior office / premises photo</div>
+            <div class="folder-item"><span>📂 Portfolio</span>Creative services samples (10–20 pieces)</div>
+            <div class="folder-item"><span>📂 Documents</span>Legal pages, visa guides, existing blog articles (PDF or Word)</div>
+            <div class="folder-item"><span>📂 Partner Logos</span>Airline, hotel, and accreditation logos (PNG, transparent bg)</div>
+          </div>
+        </div>
+      </div>
+      <div class="guide-step">
+        <div class="guide-step-num">5</div>
+        <div class="guide-step-content">
+          <strong>Use the project chat to ask questions</strong>
+          <span>The project has a built-in chat. Message your AI Innovator Pro project manager directly if you have questions about what to upload or need to clarify anything.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW SUMMARY -->
+  <div class="card">
+    <div class="card-title">✅ Submission Summary</div>
+    <p class="text-slate" style="margin-bottom:16px">Review what you've completed. Incomplete sections can be updated later via the project portal chat.</p>
+    <div class="summary-grid" id="review-summary"></div>
+  </div>
+</div>
+
+</form>
+</div>
+
+<!-- ═══════════════════════════
+     SUCCESS SCREEN
+═══════════════════════════ -->
+<div id="success-screen">
+  <div class="success-icon">🎉</div>
+  <h2>Form Submitted Successfully!</h2>
+  <p>Thank you, <span id="success-name">Theophilus</span>. AI Innovator Pro has received your website content. Your project manager will review and be in touch within 1 business day.<br /><br />
+  <strong>Next step:</strong> Check your email for your SikaCRM login credentials so you can upload your logos, photos, and documents.</p>
+  <div class="success-actions">
+    <button class="btn-action gold" id="btn-download-json">⬇ Download Your Submission (JSON)</button>
+    <a href="https://sikacrm.net" target="_blank" class="btn-action dark">🔗 Go to SikaCRM Portal</a>
+    <a href="mailto:aiinnovationpro@gmail.com" class="btn-action green">📧 Email Project Manager</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     NAV FOOTER
+═══════════════════════════ -->
+<div class="nav-footer" id="nav-footer">
+  <button class="btn-nav btn-prev" id="btn-prev" onclick="prevStep()" style="display:none">← Previous</button>
+  <span class="nav-step-text" id="nav-step-text">Fill in your business details to get started</span>
+  <button class="btn-nav btn-next" id="btn-next" onclick="nextStep()">Next Step →</button>
+</div>
+
+<!-- ═══════════════════════════
+     JAVASCRIPT
+═══════════════════════════ -->
+<script>
+// ── CONFIG ──
+// Replace with your Formspree endpoint ID after creating account at formspree.io
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xbdznyon';
+
+// ── STATE ──
+let currentStep = 1;
+const totalSteps = 7;
+let memberCount = 0, testimonialCount = 0, visaTypeCount = 0, checklistCount = 0;
+
+const stepLabels = [
+  'Business & Contact Details',
+  'Company Story & Team',
+  'Services & Pricing',
+  'Destination Content',
+  'Visa Services Detail',
+  'Website Preferences',
+  'Legal & File Upload Guide'
+];
+
+const destinations = [
+  { key: 'dubai',       name: 'Dubai (UAE)',           flag: '🇦🇪' },
+  { key: 'zanzibar',   name: 'Zanzibar',               flag: '🇹🇿' },
+  { key: 'singapore',  name: 'Singapore',              flag: '🇸🇬' },
+  { key: 'malaysia',   name: 'Malaysia',               flag: '🇲🇾' },
+  { key: 'southafrica',name: 'South Africa',           flag: '🇿🇦' },
+  { key: 'seychelles', name: 'Seychelles',             flag: '🇸🇨' },
+  { key: 'mauritius',  name: 'Mauritius',              flag: '🇲🇺' },
+  { key: 'saotome',    name: 'São Tomé and Príncipe',  flag: '🇸🇹' }
+];
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  buildStepDots();
+  updateProgress();
+  buildDestinationFields();
+  addTeamMember();
+  addTestimonial();
+  addVisaType();
+  addVisaChecklist();
+
+  // Live update of email display in SikaCRM guide
+  document.querySelector('[name="email_primary"]')?.addEventListener('input', function() {
+    const display = document.getElementById('client-email-display');
+    if (display) display.textContent = this.value || 'your registered email';
+  });
+});
+
+// ── PROGRESS ──
+function buildStepDots() {
+  const wrap = document.getElementById('step-dots');
+  for (let i = 1; i <= totalSteps; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'step-dot' + (i === 1 ? ' active' : '');
+    dot.id = 'dot-' + i;
+    wrap.appendChild(dot);
+  }
+}
+
+function updateProgress() {
+  const pct = Math.round((currentStep / totalSteps) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-label').textContent =
+    `Step ${currentStep} of ${totalSteps} — ${stepLabels[currentStep - 1]}`;
+
+  for (let i = 1; i <= totalSteps; i++) {
+    const dot = document.getElementById('dot-' + i);
+    if (dot) dot.className = 'step-dot' + (i < currentStep ? ' done' : i === currentStep ? ' active' : '');
+  }
+
+  document.getElementById('btn-prev').style.display = currentStep > 1 ? 'block' : 'none';
+
+  const btnNext = document.getElementById('btn-next');
+  const navText = document.getElementById('nav-step-text');
+
+  if (currentStep === totalSteps) {
+    btnNext.textContent = '✅ Submit Form';
+    btnNext.className = 'btn-nav btn-submit';
+    btnNext.onclick = submitForm;
+    navText.textContent = 'Final step — review and submit';
+    buildReviewSummary();
+  } else {
+    btnNext.textContent = 'Next Step →';
+    btnNext.className = 'btn-nav btn-next';
+    btnNext.onclick = nextStep;
+    navText.textContent = `Step ${currentStep} of ${totalSteps}`;
+  }
+}
+
+// ── NAVIGATION ──
+function nextStep() {
+  if (currentStep < totalSteps) {
+    document.getElementById('step-' + currentStep).classList.remove('active');
+    currentStep++;
+    document.getElementById('step-' + currentStep).classList.add('active');
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function prevStep() {
+  if (currentStep > 1) {
+    document.getElementById('step-' + currentStep).classList.remove('active');
+    currentStep--;
+    document.getElementById('step-' + currentStep).classList.add('active');
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+// ── DESTINATION FIELDS ──
+function buildDestinationFields() {
+  destinations.forEach(d => {
+    const container = document.getElementById('dest-fields-' + d.key);
+    if (!container) return;
+    container.innerHTML = `
+      <div class="field-row">
+        <div class="field-group">
+          <label>Best Time to Visit (months) <span class="priority-tag tag-high">HIGH</span></label>
+          <input type="text" name="dest_${d.key}_best_time" placeholder="e.g. November – March" />
+        </div>
+        <div class="field-group">
+          <label>Starting Price from Accra (per person) <span class="priority-tag tag-high">HIGH</span></label>
+          <input type="text" name="dest_${d.key}_price" placeholder="e.g. GHS 12,000 – 25,000" />
+        </div>
+      </div>
+      <div class="field-group">
+        <label>Top 3–5 Must-See Attractions <span class="priority-tag tag-high">HIGH</span></label>
+        <textarea name="dest_${d.key}_attractions" rows="3" placeholder="e.g. Burj Khalifa, Dubai Mall, Palm Jumeirah, Desert Safari..."></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label>Visa Requirement for Ghanaian Passport <span class="priority-tag tag-high">HIGH</span></label>
+          <select name="dest_${d.key}_visa_req">
+            <option value="">-- Select --</option>
+            <option>Visa Required (Full Embassy)</option>
+            <option>E-Visa (Online Application)</option>
+            <option>Visa on Arrival</option>
+            <option>Visa-Free</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Flight Duration from Accra (approx.)</label>
+          <input type="text" name="dest_${d.key}_flight_hrs" placeholder="e.g. ~7 hrs direct" />
+        </div>
+      </div>
+      <div class="field-group">
+        <label>Sample 3-Day Itinerary <span class="priority-tag tag-high">HIGH</span></label>
+        <textarea name="dest_${d.key}_itinerary_3d" rows="5" placeholder="Day 1: Arrival, check-in, evening at...&#10;Day 2: Morning visit to..., afternoon at...&#10;Day 3: Leisure morning, departure afternoon..."></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label>Available Golden Height Packages</label>
+          <input type="text" name="dest_${d.key}_packages" placeholder="e.g. Honeymoon, Family, Christmas Special" />
+        </div>
+        <div class="field-group">
+          <label>Recommended Hotels (Budget / Mid / Luxury)</label>
+          <textarea name="dest_${d.key}_hotels" rows="3" placeholder="Budget: [Name]&#10;Mid-range: [Name]&#10;Luxury: [Name]"></textarea>
+        </div>
+      </div>`;
+  });
+}
+
+function showDest(key, btn) {
+  document.querySelectorAll('.dest-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.dest-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('dest-' + key).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── DYNAMIC: TEAM MEMBERS ──
+function addTeamMember() {
+  memberCount++;
+  const n = memberCount;
+  const div = document.createElement('div');
+  div.className = 'dynamic-item';
+  div.id = 'team-' + n;
+  div.innerHTML = `
+    <div class="dynamic-item-header">
+      <span class="dynamic-item-title">👤 Team Member ${n}</span>
+      <button type="button" class="btn-remove" onclick="document.getElementById('team-${n}').remove()">Remove</button>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Full Name</label>
+        <input type="text" name="team_${n}_name" placeholder="e.g. Theophilus Adu" />
+      </div>
+      <div class="field-group">
+        <label>Job Title</label>
+        <input type="text" name="team_${n}_title" placeholder="e.g. CEO & Founder" />
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Bio (2–3 sentences)</label>
+      <textarea name="team_${n}_bio" rows="3" placeholder="e.g. Theophilus founded Golden Height Travel in 2018 after a decade in hospitality..."></textarea>
+    </div>
+    <div class="hint-box" style="margin-top:8px">
+      <span class="hint-icon">📸</span>
+      <span>Upload this team member's headshot photo via the <strong>SikaCRM project portal</strong> (Step 2 at end of this form). Folder: <strong>Team Photos</strong>. Label file: <em>${n}-[firstname].jpg</em></span>
+    </div>`;
+  document.getElementById('team-members').appendChild(div);
+}
+
+// ── DYNAMIC: TESTIMONIALS ──
+function addTestimonial() {
+  testimonialCount++;
+  const n = testimonialCount;
+  const div = document.createElement('div');
+  div.className = 'dynamic-item';
+  div.id = 'test-' + n;
+  div.innerHTML = `
+    <div class="dynamic-item-header">
+      <span class="dynamic-item-title">⭐ Testimonial ${n}</span>
+      <button type="button" class="btn-remove" onclick="document.getElementById('test-${n}').remove()">Remove</button>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Client Name (or Initials for privacy)</label>
+        <input type="text" name="test_${n}_name" placeholder="e.g. Abena M. or Kwame & Family" />
+      </div>
+      <div class="field-group">
+        <label>Service Used</label>
+        <select name="test_${n}_service">
+          <option value="">-- Select --</option>
+          <option>Vacation Package</option>
+          <option>Visa Services</option>
+          <option>Creative Services</option>
+          <option>Car Rental / Business</option>
+          <option>Multiple Services</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Testimonial Quote</label>
+      <textarea name="test_${n}_quote" rows="3" placeholder="e.g. Golden Height Travel made our honeymoon truly magical. Everything was arranged perfectly!"></textarea>
+    </div>`;
+  document.getElementById('testimonials').appendChild(div);
+}
+
+// ── DYNAMIC: VISA TYPES ──
+function addVisaType() {
+  visaTypeCount++;
+  const n = visaTypeCount;
+  const div = document.createElement('div');
+  div.className = 'dynamic-item';
+  div.id = 'visa-' + n;
+  div.innerHTML = `
+    <div class="dynamic-item-header">
+      <span class="dynamic-item-title">🛂 Visa Type ${n}</span>
+      <button type="button" class="btn-remove" onclick="document.getElementById('visa-${n}').remove()">Remove</button>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Destination Country</label>
+        <input type="text" name="visa_${n}_country" placeholder="e.g. United Arab Emirates" />
+      </div>
+      <div class="field-group">
+        <label>Visa Category</label>
+        <select name="visa_${n}_category">
+          <option value="">-- Select --</option>
+          <option>Tourist</option><option>Business</option>
+          <option>Student</option><option>Transit</option>
+          <option>Work</option><option>Multiple Entry</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Standard: Time + Agency Fee</label>
+        <input type="text" name="visa_${n}_standard" placeholder="e.g. 5–7 days | GHS 500" />
+      </div>
+      <div class="field-group">
+        <label>Express: Time + Agency Fee</label>
+        <input type="text" name="visa_${n}_express" placeholder="e.g. 2–3 days | GHS 800" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Ultra-Express: Time + Agency Fee</label>
+        <input type="text" name="visa_${n}_ultra" placeholder="e.g. 24 hrs | GHS 1,200" />
+      </div>
+      <div class="field-group">
+        <label>Embassy Fee (separate — paid to embassy)</label>
+        <input type="text" name="visa_${n}_embassy_fee" placeholder="e.g. USD 185 (client pays separately)" />
+      </div>
+    </div>`;
+  document.getElementById('visa-pricing').appendChild(div);
+}
+
+// ── DYNAMIC: VISA CHECKLISTS ──
+function addVisaChecklist() {
+  checklistCount++;
+  const n = checklistCount;
+  const div = document.createElement('div');
+  div.className = 'dynamic-item';
+  div.id = 'chk-' + n;
+  div.innerHTML = `
+    <div class="dynamic-item-header">
+      <span class="dynamic-item-title">📋 Document Checklist ${n}</span>
+      <button type="button" class="btn-remove" onclick="document.getElementById('chk-${n}').remove()">Remove</button>
+    </div>
+    <div class="field-group">
+      <label>Visa Type / Destination</label>
+      <input type="text" name="chk_${n}_type" placeholder="e.g. UAE Tourist Visa" />
+    </div>
+    <div class="field-group">
+      <label>Required Documents (one per line)</label>
+      <textarea name="chk_${n}_docs" rows="6" placeholder="Valid passport (min 6 months validity)&#10;2 recent passport photos (white background)&#10;Bank statement (last 3 months)&#10;Proof of employment / business registration&#10;Return flight booking confirmation&#10;Hotel reservation confirmation&#10;Travel insurance certificate"></textarea>
+    </div>`;
+  document.getElementById('visa-checklists').appendChild(div);
+}
+
+// ── REVIEW SUMMARY ──
+function buildReviewSummary() {
+  const data = new FormData(document.getElementById('intake-form'));
+  const checks = [
+    { label: 'Legal Business Name',     field: 'legal_name' },
+    { label: 'Primary Phone',           field: 'phone_primary' },
+    { label: 'WhatsApp Number',         field: 'whatsapp_number' },
+    { label: 'Primary Email',           field: 'email_primary' },
+    { label: 'Physical Address',        field: 'address' },
+    { label: 'Year Founded',            field: 'year_founded' },
+    { label: 'Founding Story',          field: 'founding_story' },
+    { label: 'Vacation Package Pricing',field: 'vacation_pricing' },
+    { label: 'Lead Notification Email', field: 'email_leads' },
+    { label: 'FAQ Content',             field: 'faq_content' },
+    { label: 'Booking Conditions',      field: 'booking_conditions' },
+    { label: 'Submitter Name',          field: 'submitter_name' },
+  ];
+  const container = document.getElementById('review-summary');
+  container.innerHTML = '';
+  checks.forEach(c => {
+    const val = (data.get(c.field) || '').trim();
+    const filled = val.length > 0;
+    const item = document.createElement('div');
+    item.className = 'summary-item';
+    item.innerHTML = `
+      <div class="s-label">${c.label}</div>
+      <div class="s-value">${filled ? val.substring(0, 80) + (val.length > 80 ? '…' : '') : '—'}</div>
+      <div class="s-status ${filled ? 's-complete' : 's-incomplete'}">${filled ? '✓ Provided' : '○ Not yet filled'}</div>`;
+    container.appendChild(item);
+  });
+}
+
+// ── SUBMIT ──
+async function submitForm() {
+  const form = document.getElementById('intake-form');
+  const confirmEl = form.querySelector('[name="confirm_accuracy"]');
+  if (!confirmEl || !confirmEl.checked) {
+    alert('Please confirm the accuracy of your information before submitting.');
+    return;
+  }
+  const nameEl = form.querySelector('[name="legal_name"]');
+  if (!nameEl || !nameEl.value.trim()) {
+    alert('Please fill in your Legal Business Name (Step 1) before submitting.');
+    return;
+  }
+
+  const btn = document.getElementById('btn-next');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+
+  // Build structured JSON
+  const formData = new FormData(form);
+  const submission = {
+    _meta: {
+      form: 'AI Innovator Pro — Website Content Intake',
+      client: 'Golden Height Travel & Consult',
+      submitted_at: new Date().toISOString(),
+      version: '2.0'
+    },
+    business_identity: {},
+    company_story: {},
+    services_pricing: { package_types: [] },
+    destinations: {},
+    visa_services: {},
+    website_preferences: {},
+    legal_content: {}
+  };
+
+  const fieldMap = {
+    business_identity: ['legal_name','trading_name','reg_number','year_founded','address','phone_primary','whatsapp_number','whatsapp_prefill','autoreply_msg','email_primary','email_bookings','email_visa','email_support','social_facebook','social_instagram','social_linkedin','social_x','social_youtube','accreditations'],
+    company_story: ['founding_story','milestones','stat_clients','stat_visa_rate','stat_years','stat_partners','partner_names','review_profile_url'],
+    services_pricing: ['vacation_pricing','vacation_inclusions','vacation_exclusions','creative_services','creative_pricing','car_rental_rates','courier_services','airline_process','visa_autoreply','visa_excluded'],
+    visa_services: ['visa_form_fields','visa_consult','visa_tracking','faq_content'],
+    website_preferences: ['email_leads','email_leads_cc','online_payment','multistep_forms','ref_numbers','french_version','nav_structure'],
+    legal_content: ['privacy_policy','terms_conditions','booking_conditions','blog_source','blog_topics','additional_notes','submitter_name','submitter_role']
+  };
+
+  for (const [section, fields] of Object.entries(fieldMap)) {
+    fields.forEach(f => {
+      const v = formData.get(f);
+      if (v && v.trim()) submission[section][f] = v.trim();
+    });
+  }
+
+  // Package types
+  form.querySelectorAll('[name="pkg_type"]:checked').forEach(el => {
+    submission.services_pricing.package_types.push(el.value);
+  });
+
+  // Destinations
+  destinations.forEach(d => {
+    const dest = {};
+    ['best_time','price','attractions','visa_req','flight_hrs','itinerary_3d','packages','hotels'].forEach(f => {
+      const v = formData.get(`dest_${d.key}_${f}`);
+      if (v && v.trim()) dest[f] = v.trim();
+    });
+    if (Object.keys(dest).length > 0) submission.destinations[d.key] = dest;
+  });
+
+  window._submissionData = submission;
+
+  // Submit to Formspree
+  if (FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')) {
+    // No Formspree ID yet — just download JSON
+    showSuccess(formData);
+  } else {
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: JSON.stringify(submission)
+      });
+      if (res.ok) {
+        showSuccess(formData);
+      } else {
+        alert('Submission error. Please download your JSON and email it to aiinnovationpro@gmail.com');
+        downloadJSON();
+        btn.textContent = '✅ Submit Form';
+        btn.disabled = false;
+      }
+    } catch (e) {
+      showSuccess(formData); // Fallback to JSON download
+    }
+  }
+}
+
+function showSuccess(formData) {
+  document.getElementById('form-wrap').style.display = 'none';
+  document.getElementById('nav-footer').style.display = 'none';
+  document.querySelector('.progress-wrap').style.display = 'none';
+  document.getElementById('success-screen').style.display = 'block';
+
+  const name = (formData.get('submitter_name') || formData.get('legal_name') || 'Theophilus').split(' ')[0];
+  document.getElementById('success-name').textContent = name;
+  document.getElementById('btn-download-json').onclick = downloadJSON;
+}
+
+function downloadJSON() {
+  const blob = new Blob([JSON.stringify(window._submissionData, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `GHT-Website-Intake-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+}
+</script>
+</body>
+</html>
