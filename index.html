@@ -219,6 +219,53 @@
     .hint-box.green { background: #F0FDF4; border-color: #BBF7D0; color: #166534; }
     .hint-box.amber { background: #FFFBEB; border-color: #FDE68A; color: #92400E; }
 
+    /* ── UPLOAD NOTICE ── */
+    .upload-notice {
+      display: flex; align-items: center; gap: 8px;
+      background: #FFF7ED; border: 1px solid #FED7AA;
+      color: #9A3412; border-radius: 6px;
+      padding: 8px 12px; margin-top: 10px;
+      font-size: 12px; font-weight: 600;
+    }
+    .upload-notice a { color: #C2410C; text-decoration: underline; margin-left: auto; white-space: nowrap; }
+    .upload-notice .folder-tag {
+      background: #FFEDD5; border: 1px solid #FDBA74;
+      padding: 2px 8px; border-radius: 4px; font-size: 11px;
+    }
+
+    /* ── FILE CHECKLIST ── */
+    .file-checklist-card {
+      background: var(--white); border: 2px solid var(--gold);
+      border-radius: var(--radius); padding: 24px; margin-bottom: 20px;
+    }
+    .file-checklist-card .checklist-title {
+      font-size: 16px; font-weight: 700; color: var(--navy);
+      margin-bottom: 6px; display: flex; align-items: center; gap: 8px;
+    }
+    .file-checklist-card .checklist-subtitle {
+      font-size: 13px; color: var(--slate); margin-bottom: 20px;
+    }
+    .checklist-group { margin-bottom: 18px; }
+    .checklist-group-title {
+      font-size: 13px; font-weight: 700; color: var(--navy2);
+      background: var(--light); padding: 6px 10px; border-radius: 6px;
+      margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+    }
+    .check-row {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px;
+    }
+    .check-row:last-child { border-bottom: none; }
+    .check-row input[type="checkbox"] { width: 16px; height: 16px; min-width: 16px; margin-top: 1px; accent-color: var(--gold); }
+    .check-row .check-label { flex: 1; color: var(--navy); }
+    .check-row .check-spec { font-size: 11px; color: var(--slate); display: block; margin-top: 2px; }
+    .checklist-progress {
+      background: var(--light); border-radius: 8px; padding: 12px 16px;
+      margin-top: 16px; font-size: 13px; color: var(--slate);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .checklist-progress strong { color: var(--navy); }
+
     /* ── SIKA CRM GUIDE ── */
     .sikacrm-guide {
       background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
@@ -479,6 +526,11 @@
         <input type="text" name="accreditations" placeholder="e.g. IATA, Ghana Tourism Authority — list all" />
       </div>
     </div>
+    <div class="upload-notice">
+      📎 <span>Upload your <strong>company logo files</strong> and <strong>accreditation badges</strong> to the portal after submitting</span>
+      <span class="folder-tag">📂 Logos &amp; Partner Logos</span>
+      <a href="https://aiinnovatorpro.sikacrm.net/login" target="_blank">Go to Portal →</a>
+    </div>
   </div>
 </div>
 
@@ -527,7 +579,12 @@
 
   <div class="card priority-high">
     <div class="card-title">🔴 Team Members</div>
-    <p class="text-slate mb-2">Add each team member who should appear on the website. For photos, upload them via the SikaCRM project portal (Step 2 at the end of this form).</p>
+    <p class="text-slate mb-2">Add each team member who should appear on the website. Fill in their details below, then upload their headshot photos separately.</p>
+    <div class="upload-notice">
+      📎 <span>Upload a <strong>professional headshot</strong> for each team member (min 400×400px, named FirstName.jpg)</span>
+      <span class="folder-tag">📂 Team Photos</span>
+      <a href="https://aiinnovatorpro.sikacrm.net/login" target="_blank">Go to Portal →</a>
+    </div>
     <div id="team-members" class="dynamic-section"></div>
     <button type="button" class="btn-add" onclick="addTeamMember()">+ Add Team Member</button>
   </div>
@@ -544,6 +601,11 @@
     <div class="field-group">
       <label>Partner / Airline / Hotel Names to Display</label>
       <textarea name="partner_names" rows="3" placeholder="e.g. Emirates, Kenya Airways, Marriott, Accor Hotels, Radisson — list all partners you have permission to display"></textarea>
+      <div class="upload-notice">
+        📎 <span>Upload <strong>airline, hotel &amp; accreditation logos</strong> (PNG with transparent background)</span>
+        <span class="folder-tag">📂 Partner Logos</span>
+        <a href="https://aiinnovatorpro.sikacrm.net/login" target="_blank">Go to Portal →</a>
+      </div>
     </div>
     <div class="field-group">
       <label>Google Business / TripAdvisor Profile URL</label>
@@ -647,7 +709,12 @@
   <div class="step-header">
     <div class="step-badge">🌍 Step 4 of 7</div>
     <h1 class="step-title">Destination-Specific Content</h1>
-    <p class="step-subtitle">Each of your 8 destination pages needs unique, accurate content. Click each tab to fill in details. Destination photography is uploaded via the SikaCRM portal.</p>
+    <p class="step-subtitle">Each of your 8 destination pages needs unique, accurate content. Click each tab to fill in details.</p>
+    <div class="upload-notice" style="margin-top:0; margin-bottom:20px">
+      📎 <span>For each destination: upload <strong>1 hero photo + 3–5 gallery images</strong> (min 1280×720px, labelled by destination name)</span>
+      <span class="folder-tag">📂 Destinations</span>
+      <a href="https://aiinnovatorpro.sikacrm.net/login" target="_blank">Go to Portal →</a>
+    </div>
   </div>
 
   <div class="hint-box">
@@ -826,6 +893,11 @@
         <label class="radio-item"><input type="radio" name="privacy_source" value="draft_it" /> Please draft it for me</label>
       </div>
       <textarea name="privacy_policy" rows="5" placeholder="Paste your Privacy Policy text here (tailored to Ghana jurisdiction)..."></textarea>
+      <div class="upload-notice">
+        📎 <span>If you have a <strong>Privacy Policy PDF or Word doc</strong>, upload the file too</span>
+        <span class="folder-tag">📂 Documents</span>
+        <a href="https://aiinnovatorpro.sikacrm.net/login" target="_blank">Go to Portal →</a>
+      </div>
     </div>
     <hr />
     <div class="field-group">
@@ -835,6 +907,11 @@
         <label class="radio-item"><input type="radio" name="terms_source" value="draft_it" /> Please draft it for me</label>
       </div>
       <textarea name="terms_conditions" rows="5" placeholder="Paste your Terms & Conditions text here..."></textarea>
+      <div class="upload-notice">
+        📎 <span>If you have a <strong>Terms &amp; Conditions PDF or Word doc</strong>, upload the file too</span>
+        <span class="folder-tag">📂 Documents</span>
+        <a href="https://aiinnovatorpro.sikacrm.net/login" target="_blank">Go to Portal →</a>
+      </div>
     </div>
     <hr />
     <div class="field-group">
@@ -856,6 +933,11 @@
     <div class="field-group">
       <label>Blog Topics to Cover</label>
       <textarea name="blog_topics" rows="4" placeholder="e.g.&#10;- Top 5 beaches in Zanzibar for Ghanaians&#10;- How to apply for a UAE visa from Accra&#10;- Christmas travel packages 2026&#10;- Visa-free destinations for Ghanaian passport holders&#10;- Why use a travel agent vs booking yourself"></textarea>
+      <div class="upload-notice">
+        📎 <span>If you have <strong>existing blog articles</strong> ready (Word, Google Doc, or PDF), upload them to the portal</span>
+        <span class="folder-tag">📂 Documents</span>
+        <a href="https://aiinnovatorpro.sikacrm.net/login" target="_blank">Go to Portal →</a>
+      </div>
     </div>
   </div>
 
@@ -880,6 +962,70 @@
         <input type="checkbox" name="confirm_accuracy" required style="width:auto;margin-right:8px" />
         I confirm all information submitted is accurate and I am authorised to provide it.
       </label>
+    </div>
+  </div>
+
+  <!-- FILE UPLOAD CHECKLIST -->
+  <div class="file-checklist-card">
+    <div class="checklist-title">📋 File Upload Checklist</div>
+    <p class="checklist-subtitle">Tick off each file as you prepare it, then upload everything to the SikaCRM portal after submitting this form. All files are required before we can begin building your site.</p>
+
+    <div class="checklist-group">
+      <div class="checklist-group-title">📂 Logos</div>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Full colour logo (PNG + SVG)<span class="check-spec">Transparent background. Both formats needed.</span></div></label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">White / reversed logo<span class="check-spec">For use on dark backgrounds (navy, dark photos).</span></div></label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Icon / favicon version<span class="check-spec">Square crop of logo, min 512×512px.</span></div></label>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-group-title">📂 Team Photos</div>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Professional headshot for each team member<span class="check-spec">Min 400×400px. Name each file: FirstName-LastName.jpg (e.g. Theophilus-Adu.jpg)</span></div></label>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-group-title">📂 Hero Images</div>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Homepage hero banner<span class="check-spec">Min 1920×1080px. High quality, travel-themed.</span></div></label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Vacation Packages page banner<span class="check-spec">Min 1920×1080px.</span></div></label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Visa Services page banner<span class="check-spec">Min 1920×1080px.</span></div></label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Creative Services page banner<span class="check-spec">Min 1920×1080px.</span></div></label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Business Solutions page banner<span class="check-spec">Min 1920×1080px.</span></div></label>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-group-title">📂 Destinations (8 required)</div>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Dubai — 1 hero photo + 3–5 gallery images<span class="check-spec">Label files: Dubai-Hero.jpg, Dubai-1.jpg, Dubai-2.jpg etc.</span></div></label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Zanzibar — 1 hero photo + 3–5 gallery images<span class="check-spec">Label: Zanzibar-Hero.jpg, Zanzibar-1.jpg etc.</span></div></label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Singapore — 1 hero photo + 3–5 gallery images</label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Malaysia — 1 hero photo + 3–5 gallery images</label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">South Africa — 1 hero photo + 3–5 gallery images</label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Seychelles — 1 hero photo + 3–5 gallery images</label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Mauritius — 1 hero photo + 3–5 gallery images</label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">São Tomé — 1 hero photo + 3–5 gallery images</label>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-group-title">📂 Office Photos</div>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Office interior or exterior photo<span class="check-spec">At least 1 good quality photo of your premises.</span></div></label>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-group-title">📂 Partner Logos</div>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Airline partner logos<span class="check-spec">PNG with transparent background for each airline partner.</span></div></label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Hotel / accommodation partner logos<span class="check-spec">PNG with transparent background.</span></div></label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Industry accreditation badges (IATA, Ghana Tourism Authority, etc.)<span class="check-spec">PNG with transparent background.</span></div></label>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-group-title">📂 Documents</div>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Privacy Policy document (if you have it)<span class="check-spec">PDF or Word. Skip if you selected "draft it for me" above.</span></div></label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Terms &amp; Conditions document (if you have it)<span class="check-spec">PDF or Word.</span></div></label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Visa requirement guides / checklists<span class="check-spec">Any existing PDF guides you give to clients.</span></div></label>
+      <label class="check-row"><input type="checkbox" /><div class="check-label">Existing blog articles (if ready)<span class="check-spec">Word, Google Doc export, or PDF.</span></div></label>
+    </div>
+
+    <div class="checklist-progress">
+      <span>Upload all files to: <strong>aiinnovatorpro.sikacrm.net/login</strong></span>
+      <a href="https://aiinnovatorpro.sikacrm.net/login" target="_blank" style="background:var(--gold);color:var(--navy);padding:6px 16px;border-radius:6px;font-weight:700;font-size:12px;text-decoration:none;">Open Portal →</a>
     </div>
   </div>
 
