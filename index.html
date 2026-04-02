@@ -346,8 +346,33 @@
       position: fixed; bottom: 0; left: 0; right: 0;
       background: var(--white); border-top: 1px solid var(--border);
       padding: 16px 32px;
+      padding-bottom: max(16px, env(safe-area-inset-bottom));
       display: flex; align-items: center; justify-content: space-between;
       box-shadow: 0 -4px 20px rgba(0,0,0,0.08); z-index: 50;
+    }
+
+    /* ── INLINE STEP NAV ── */
+    .step-inline-nav {
+      display: flex; justify-content: flex-end; align-items: center;
+      gap: 12px; margin-top: 28px; padding-top: 20px;
+      border-top: 2px solid var(--border);
+    }
+    .btn-inline-prev {
+      padding: 12px 24px; border-radius: 8px; font-size: 14px;
+      font-weight: 600; cursor: pointer; border: 1px solid var(--border);
+      background: var(--light); color: var(--navy2);
+    }
+    .btn-inline-next {
+      padding: 14px 32px; border-radius: 8px; font-size: 15px;
+      font-weight: 700; cursor: pointer; border: none;
+      background: var(--gold); color: var(--navy);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .btn-inline-next:hover { background: var(--gold-dk); }
+    .btn-inline-submit {
+      padding: 14px 32px; border-radius: 8px; font-size: 15px;
+      font-weight: 700; cursor: pointer; border: none;
+      background: var(--green); color: var(--white);
     }
     .btn-nav {
       padding: 12px 28px; border-radius: 8px;
@@ -1158,6 +1183,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buildStepDots();
   updateProgress();
   buildDestinationFields();
+  buildInlineNav();
   addTeamMember();
   addTestimonial();
   addVisaType();
@@ -1209,6 +1235,45 @@ function updateProgress() {
     btnNext.className = 'btn-nav btn-next';
     btnNext.onclick = nextStep;
     navText.textContent = `Step ${currentStep} of ${totalSteps}`;
+  }
+}
+
+// ── INJECT INLINE NAV BUTTONS INTO EACH STEP ──
+function buildInlineNav() {
+  for (let i = 1; i <= totalSteps; i++) {
+    const step = document.getElementById('step-' + i);
+    if (!step) continue;
+    const nav = document.createElement('div');
+    nav.className = 'step-inline-nav';
+    nav.id = 'inline-nav-' + i;
+
+    if (i > 1) {
+      const prev = document.createElement('button');
+      prev.type = 'button';
+      prev.className = 'btn-inline-prev';
+      prev.textContent = '← Back';
+      prev.onclick = prevStep;
+      nav.appendChild(prev);
+    }
+
+    const spacer = document.createElement('span');
+    spacer.style.flex = '1';
+    nav.appendChild(spacer);
+
+    const next = document.createElement('button');
+    next.type = 'button';
+    next.id = 'inline-next-' + i;
+    if (i === totalSteps) {
+      next.className = 'btn-inline-submit';
+      next.textContent = '✅ Submit Form';
+      next.onclick = submitForm;
+    } else {
+      next.className = 'btn-inline-next';
+      next.innerHTML = 'Continue to Step ' + (i + 1) + ' <span>→</span>';
+      next.onclick = nextStep;
+    }
+    nav.appendChild(next);
+    step.appendChild(nav);
   }
 }
 
